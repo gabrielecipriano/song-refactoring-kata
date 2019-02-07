@@ -1,13 +1,17 @@
 package katas;
 
-public class Song {
-    public static void main(String[] args) {
-        new Song().run();
-    }
+import org.junit.jupiter.api.Test;
 
-    void run() {
-        String song =
-                "There was an old lady who swallowed a fly.\n" +
+import java.io.ByteArrayOutputStream;
+import java.io.PrintStream;
+
+import static org.hamcrest.CoreMatchers.is;
+import static org.hamcrest.MatcherAssert.assertThat;
+
+class GoldenMaster {
+    @Test
+    void verify() {
+        assertThatSongIs("There was an old lady who swallowed a fly.\n" +
                 "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +
                 "There was an old lady who swallowed a spider;\n" +
@@ -46,8 +50,24 @@ public class Song {
                 "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                 "\n" +
                 "There was an old lady who swallowed a horse...\n" +
-                "...She's dead, of course!";
+                "...She's dead, of course!\n");
+    }
 
-        System.out.println(song);
+    private void assertThatSongIs(String lyrics) {
+        PrintStream originalOut = System.out;
+
+        try (ByteArrayOutputStream output = new ByteArrayOutputStream();
+             PrintStream outputStream = new PrintStream(output)) {
+            System.setOut(outputStream);
+
+            new Song().run();
+
+            assertThat(output.toString(), is(lyrics));
+
+        } catch (Exception e) {
+            e.printStackTrace();
+        }
+
+        System.setOut(originalOut);
     }
 }
