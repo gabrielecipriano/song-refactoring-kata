@@ -20,20 +20,9 @@ public class Song {
                 "\n" +
                 thirdVerse(fly, spider, bird) +
                 "\n" +
-                "There was an old lady who swallowed a " + cat.name + ";\n" +
-                cat.rhyme +
-                "She swallowed the " + cat.name + " to catch the " + bird.name + ",\n" +
-                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
-                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
-                fly.rhyme +
+                fourthVerse(fly, spider, bird, cat) +
                 "\n" +
-                "There was an old lady who swallowed a " + dog.name + ";\n" +
-                dog.rhyme +
-                "She swallowed the " + dog.name + " to catch the " + cat.name + ",\n" +
-                "She swallowed the " + cat.name + " to catch the " + bird.name + ",\n" +
-                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
-                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
-                fly.rhyme +
+                fifthVerse(fly, spider, bird, cat, dog) +
                 "\n" +
                 "There was an old lady who swallowed a " + cow.name + ";\n" +
                 cow.rhyme +
@@ -48,6 +37,23 @@ public class Song {
                 horse.rhyme;
 
         System.out.println(song);
+    }
+
+    private String fifthVerse(Animal fly, Animal spider, Animal bird, Animal cat, Animal dog) {
+        return exposition(dog, ";") +
+                development(dog, cat, ",") +
+                development(cat, bird, ",") +
+                development(bird, spider, ",") +
+                development(spider, fly, ";") +
+                coda(fly);
+    }
+
+    private String fourthVerse(Animal fly, Animal spider, Animal bird, Animal cat) {
+        return exposition(cat, ";") +
+                development(cat, bird, ",") +
+                development(bird, spider, ",") +
+                development(spider, fly, ";") +
+                coda(fly);
     }
 
     private String thirdVerse(Animal fly, Animal spider, Animal bird) {
