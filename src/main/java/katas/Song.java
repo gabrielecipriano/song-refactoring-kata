@@ -1,6 +1,8 @@
 package katas;
 
 import java.util.Arrays;
+import java.util.stream.Collectors;
+import java.util.stream.IntStream;
 
 import static java.lang.String.*;
 
@@ -26,19 +28,17 @@ public class Song {
 
         String song = exposition(fly, ".") +
                 "\n" +
-                verse(Arrays.copyOfRange(animals, 0, 2)) +
-                "\n" +
-                verse(Arrays.copyOfRange(animals, 0, 3)) +
-                "\n" +
-                verse(Arrays.copyOfRange(animals, 0, 4)) +
-                "\n" +
-                verse(Arrays.copyOfRange(animals, 0, 5)) +
-                "\n" +
-                verse(Arrays.copyOfRange(animals, 0, 6)) +
+                verses(animals) +
                 "\n" +
                 exposition(horse, "...");
 
         System.out.println(song);
+    }
+
+    private String verses(Animal[] animals) {
+        return IntStream.range(2, animals.length)
+                .mapToObj(i -> verse(Arrays.copyOfRange(animals, 0, i)))
+                .collect(Collectors.joining("\n"));
     }
 
     private String verse(Animal... animals) {
