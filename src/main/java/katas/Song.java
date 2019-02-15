@@ -14,19 +14,11 @@ public class Song {
         Animal cow = new Animal("cow", "I don't know how she swallowed a cow!\n");
         Animal horse = new Animal("horse", "...She's dead, of course!");
 
-        String song = "There was an old lady who swallowed a " + fly.name + ".\n" +
-                fly.rhyme +
+        String song = exposition(fly, ".") +
                 "\n" +
-                "There was an old lady who swallowed a " + spider.name + ";\n" +
-                spider.rhyme +
-                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
-                fly.rhyme +
+                secondVerse(fly, spider) +
                 "\n" +
-                "There was an old lady who swallowed a " + bird.name + ";\n" +
-                bird.rhyme +
-                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
-                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
-                fly.rhyme +
+                thirdVerse(fly, spider, bird) +
                 "\n" +
                 "There was an old lady who swallowed a " + cat.name + ";\n" +
                 cat.rhyme +
@@ -56,6 +48,32 @@ public class Song {
                 horse.rhyme;
 
         System.out.println(song);
+    }
+
+    private String thirdVerse(Animal fly, Animal spider, Animal bird) {
+        return exposition(bird, ";") +
+                development(bird, spider, ",") +
+                development(spider, fly, ";") +
+                coda(fly);
+    }
+
+    private String secondVerse(Animal fly, Animal spider) {
+        return exposition(spider, ";") +
+                development(spider,fly, ";") +
+                coda(fly);
+    }
+
+    private String development(Animal firstAnimal, Animal secondAnimal, final String punctuation) {
+        return "She swallowed the " + firstAnimal.name + " to catch the " + secondAnimal.name + punctuation + "\n";
+    }
+
+    private String coda(Animal fly) {
+        return fly.rhyme;
+    }
+
+    private String exposition(Animal animal, final String punctuation) {
+        return "There was an old lady who swallowed a " + animal.name + punctuation + "\n" +
+                animal.rhyme;
     }
 
     private class Animal {
