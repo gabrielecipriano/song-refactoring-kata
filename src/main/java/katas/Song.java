@@ -1,5 +1,7 @@
 package katas;
 
+import static java.lang.String.*;
+
 public class Song {
     public static void main(String[] args) {
         new Song().execute();
@@ -39,6 +41,24 @@ public class Song {
         System.out.println(song);
     }
 
+    private String secondVerse(Animal fly, Animal spider) {
+        return exposition(spider, ";") +
+                development(fly, spider)+
+                coda(fly);
+    }
+
+    private String thirdVerse(Animal fly, Animal spider, Animal bird) {
+        return exposition(bird, ";") +
+                development(fly, spider, bird) +
+                coda(fly);
+    }
+
+    private String fourthVerse(Animal fly, Animal spider, Animal bird, Animal cat) {
+        return exposition(cat, ";") +
+                development(fly, spider, bird, cat) +
+                coda(fly);
+    }
+
     private String fifthVerse(Animal fly, Animal spider, Animal bird, Animal cat, Animal dog) {
         return exposition(dog, ";") +
                 development(fly, spider, bird, cat, dog) +
@@ -48,36 +68,12 @@ public class Song {
     private String development(Animal... animals) {
         StringBuilder sb = new StringBuilder();
         for (int i = animals.length - 1; i > 0; i--) {
-            sb.append(development(animals[i], animals[i-1], i == 1 ? ";" : ","));
+            final String punctuation = i == 1 ? ";" : ",";
+            sb.append(format("She swallowed the %s to catch the %s%s\n", animals[i].name, animals[i - 1].name, punctuation));
         }
         return sb.toString();
     }
 
-
-    private String fourthVerse(Animal fly, Animal spider, Animal bird, Animal cat) {
-        return exposition(cat, ";") +
-                development(cat, bird, ",") +
-                development(bird, spider, ",") +
-                development(spider, fly, ";") +
-                coda(fly);
-    }
-
-    private String thirdVerse(Animal fly, Animal spider, Animal bird) {
-        return exposition(bird, ";") +
-                development(bird, spider, ",") +
-                development(spider, fly, ";") +
-                coda(fly);
-    }
-
-    private String secondVerse(Animal fly, Animal spider) {
-        return exposition(spider, ";") +
-                development(spider,fly, ";") +
-                coda(fly);
-    }
-
-    private String development(Animal firstAnimal, Animal secondAnimal, final String punctuation) {
-        return "She swallowed the " + firstAnimal.name + " to catch the " + secondAnimal.name + punctuation + "\n";
-    }
 
     private String coda(Animal fly) {
         return fly.rhyme;
