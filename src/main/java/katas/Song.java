@@ -41,12 +41,18 @@ public class Song {
 
     private String fifthVerse(Animal fly, Animal spider, Animal bird, Animal cat, Animal dog) {
         return exposition(dog, ";") +
-                development(dog, cat, ",") +
-                development(cat, bird, ",") +
-                development(bird, spider, ",") +
-                development(spider, fly, ";") +
+                development(fly, spider, bird, cat, dog) +
                 coda(fly);
     }
+
+    private String development(Animal... animals) {
+        StringBuilder sb = new StringBuilder();
+        for (int i = animals.length - 1; i > 0; i--) {
+            sb.append(development(animals[i], animals[i-1], i == 1 ? ";" : ","));
+        }
+        return sb.toString();
+    }
+
 
     private String fourthVerse(Animal fly, Animal spider, Animal bird, Animal cat) {
         return exposition(cat, ";") +
