@@ -18,35 +18,19 @@ public class Song {
 
         String song = exposition(fly, ".") +
                 "\n" +
-                secondVerse(fly, spider) +
+                verse(fly, spider) +
                 "\n" +
-                thirdVerse(fly, spider, bird) +
+                verse(fly, spider, bird) +
                 "\n" +
-                fourthVerse(fly, spider, bird, cat) +
+                verse(fly, spider, bird, cat) +
                 "\n" +
-                fifthVerse(fly, spider, bird, cat, dog) +
+                verse(fly, spider, bird, cat, dog) +
                 "\n" +
                 verse(fly,spider, bird, cat, dog, cow) +
                 "\n" +
                 exposition(horse, "...");
 
         System.out.println(song);
-    }
-
-    private String secondVerse(Animal fly, Animal spider) {
-        return verse(fly, spider);
-    }
-
-    private String thirdVerse(Animal fly, Animal spider, Animal bird) {
-        return verse(fly, spider, bird);
-    }
-
-    private String fourthVerse(Animal fly, Animal spider, Animal bird, Animal cat) {
-        return verse(fly, spider, bird, cat);
-    }
-
-    private String fifthVerse(Animal fly, Animal spider, Animal bird, Animal cat, Animal dog) {
-        return verse(fly, spider, bird, cat, dog);
     }
 
     private String verse(Animal... animals) {
