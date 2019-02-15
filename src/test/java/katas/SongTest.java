@@ -2,10 +2,10 @@ package katas;
 
 import org.junit.jupiter.api.Test;
 
-import java.io.ByteArrayInputStream;
 import java.io.ByteArrayOutputStream;
 import java.io.IOException;
 import java.io.PrintStream;
+import java.util.function.Consumer;
 
 import static org.hamcrest.CoreMatchers.is;
 import static org.hamcrest.MatcherAssert.assertThat;
@@ -14,15 +14,10 @@ import static org.hamcrest.MatcherAssert.assertThat;
 class SongTest {
     @Test
     void should_pass() throws Exception {
-        PrintStream originalOut = System.out;
-
-        try (ByteArrayOutputStream output = new ByteArrayOutputStream();
-             PrintStream outputStream = new PrintStream(output)) {
-            System.setOut(outputStream);
-
+        executeReadingSystemOut((out) -> {
             new Song().execute();
 
-            assertThat(output.toString(), is("There was an old lady who swallowed a fly.\n" +
+            assertThat(out.toString(), is("There was an old lady who swallowed a fly.\n" +
                     "I don't know why she swallowed a fly - perhaps she'll die!\n" +
                     "\n" +
                     "There was an old lady who swallowed a spider;\n" +
@@ -62,6 +57,18 @@ class SongTest {
                     "\n" +
                     "There was an old lady who swallowed a horse...\n" +
                     "...She's dead, of course!\n"));
+        });
+    }
+
+    private void executeReadingSystemOut(Consumer<ByteArrayOutputStream> test) throws IOException {
+        PrintStream originalOut = System.out;
+
+        try (ByteArrayOutputStream output = new ByteArrayOutputStream();
+             PrintStream outputStream = new PrintStream(output)) {
+
+            System.setOut(outputStream);
+
+            test.accept(output);
         }
 
         System.setOut(originalOut);
