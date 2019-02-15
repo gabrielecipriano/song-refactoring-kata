@@ -28,8 +28,7 @@ public class Song {
                 "\n" +
                 verse(fly,spider, bird, cat, dog, cow) +
                 "\n" +
-                "There was an old lady who swallowed a " + horse.name + "...\n" +
-                horse.rhyme;
+                exposition(horse, "...");
 
         System.out.println(song);
     }
