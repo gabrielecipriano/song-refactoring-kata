@@ -1,5 +1,7 @@
 package katas;
 
+import java.util.Arrays;
+
 import static java.lang.String.*;
 
 public class Song {
@@ -16,17 +18,23 @@ public class Song {
         Animal cow = new Animal("cow", "I don't know how she swallowed a cow!\n");
         Animal horse = new Animal("horse", "...She's dead, of course!");
 
+        Animal[] animals = new Animal[] {
+                fly, spider, bird, cat, dog, cow, horse
+        };
+
+
+
         String song = exposition(fly, ".") +
                 "\n" +
-                verse(fly, spider) +
+                verse(Arrays.copyOfRange(animals, 0, 2)) +
                 "\n" +
-                verse(fly, spider, bird) +
+                verse(Arrays.copyOfRange(animals, 0, 3)) +
                 "\n" +
-                verse(fly, spider, bird, cat) +
+                verse(Arrays.copyOfRange(animals, 0, 4)) +
                 "\n" +
-                verse(fly, spider, bird, cat, dog) +
+                verse(Arrays.copyOfRange(animals, 0, 5)) +
                 "\n" +
-                verse(fly,spider, bird, cat, dog, cow) +
+                verse(Arrays.copyOfRange(animals, 0, 6)) +
                 "\n" +
                 exposition(horse, "...");
 
