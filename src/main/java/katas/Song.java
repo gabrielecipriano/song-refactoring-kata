@@ -6,68 +6,66 @@ public class Song {
     }
 
     public void execute() {
-        String fly = "fly";
-        String flyRhyme = "I don't know why she swallowed a fly - perhaps she'll die!\n";
+        Animal fly = new Animal("fly", "I don't know why she swallowed a fly - perhaps she'll die!\n");
+        Animal spider = new Animal("spider", "That wriggled and wiggled and tickled inside her.\n");
+        Animal bird = new Animal("bird", "How absurd to swallow a bird.\n");
+        Animal cat = new Animal("cat", "Fancy that to swallow a cat!\n");
+        Animal dog = new Animal("dog", "What a hog, to swallow a dog!\n");
+        Animal cow = new Animal("cow", "I don't know how she swallowed a cow!\n");
+        Animal horse = new Animal("horse", "...She's dead, of course!");
 
-        String spider = "spider";
-        String spiderRhyme = "That wriggled and wiggled and tickled inside her.\n";
-
-        String bird = "bird";
-        String birdRhyme = "How absurd to swallow a bird.\n";
-
-        String cat = "cat";
-        String catRhyme = "Fancy that to swallow a cat!\n";
-
-        String dog = "dog";
-        String dogRhyme = "What a hog, to swallow a dog!\n";
-
-        String cow = "cow";
-        String cowRhyme = "I don't know how she swallowed a cow!\n";
-
-        String horse = "horse";
-        String horseRhyme = "...She's dead, of course!";
-
-        String song = "There was an old lady who swallowed a " + fly + ".\n" +
-                flyRhyme +
+        String song = "There was an old lady who swallowed a " + fly.name + ".\n" +
+                fly.rhyme +
                 "\n" +
-                "There was an old lady who swallowed a " + spider + ";\n" +
-                spiderRhyme +
-                "She swallowed the " + spider + " to catch the " + fly + ";\n" +
-                flyRhyme +
+                "There was an old lady who swallowed a " + spider.name + ";\n" +
+                spider.rhyme +
+                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
+                fly.rhyme +
                 "\n" +
-                "There was an old lady who swallowed a " + bird + ";\n" +
-                birdRhyme +
-                "She swallowed the " + bird + " to catch the " + spider + ",\n" +
-                "She swallowed the " + spider + " to catch the " + fly + ";\n" +
-                flyRhyme +
+                "There was an old lady who swallowed a " + bird.name + ";\n" +
+                bird.rhyme +
+                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
+                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
+                fly.rhyme +
                 "\n" +
-                "There was an old lady who swallowed a " + cat + ";\n" +
-                catRhyme +
-                "She swallowed the " + cat + " to catch the " + bird + ",\n" +
-                "She swallowed the " + bird + " to catch the " + spider + ",\n" +
-                "She swallowed the " + spider + " to catch the " + fly + ";\n" +
-                flyRhyme +
+                "There was an old lady who swallowed a " + cat.name + ";\n" +
+                cat.rhyme +
+                "She swallowed the " + cat.name + " to catch the " + bird.name + ",\n" +
+                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
+                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
+                fly.rhyme +
                 "\n" +
-                "There was an old lady who swallowed a " + dog + ";\n" +
-                dogRhyme +
-                "She swallowed the " + dog + " to catch the " + cat + ",\n" +
-                "She swallowed the " + cat + " to catch the " + bird + ",\n" +
-                "She swallowed the " + bird + " to catch the " + spider + ",\n" +
-                "She swallowed the " + spider + " to catch the " + fly + ";\n" +
-                flyRhyme +
+                "There was an old lady who swallowed a " + dog.name + ";\n" +
+                dog.rhyme +
+                "She swallowed the " + dog.name + " to catch the " + cat.name + ",\n" +
+                "She swallowed the " + cat.name + " to catch the " + bird.name + ",\n" +
+                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
+                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
+                fly.rhyme +
                 "\n" +
-                "There was an old lady who swallowed a " + cow + ";\n" +
-                cowRhyme +
-                "She swallowed the " + cow + " to catch the " + dog + ",\n" +
-                "She swallowed the " + dog + " to catch the " + cat + ",\n" +
-                "She swallowed the " + cat + " to catch the " + bird + ",\n" +
-                "She swallowed the " + bird + " to catch the " + spider + ",\n" +
-                "She swallowed the " + spider + " to catch the " + fly + ";\n" +
-                flyRhyme +
+                "There was an old lady who swallowed a " + cow.name + ";\n" +
+                cow.rhyme +
+                "She swallowed the " + cow.name + " to catch the " + dog.name + ",\n" +
+                "She swallowed the " + dog.name + " to catch the " + cat.name + ",\n" +
+                "She swallowed the " + cat.name + " to catch the " + bird.name + ",\n" +
+                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
+                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
+                fly.rhyme +
                 "\n" +
-                "There was an old lady who swallowed a " + horse + "...\n" +
-                horseRhyme;
+                "There was an old lady who swallowed a " + horse.name + "...\n" +
+                horse.rhyme;
 
         System.out.println(song);
+    }
+
+    private class Animal {
+
+        private final String name;
+        private final String rhyme;
+
+        public Animal(String name, String rhyme) {
+            this.name = name;
+            this.rhyme = rhyme;
+        }
     }
 }
