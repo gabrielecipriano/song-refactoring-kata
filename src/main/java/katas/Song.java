@@ -26,14 +26,7 @@ public class Song {
                 "\n" +
                 fifthVerse(fly, spider, bird, cat, dog) +
                 "\n" +
-                "There was an old lady who swallowed a " + cow.name + ";\n" +
-                cow.rhyme +
-                "She swallowed the " + cow.name + " to catch the " + dog.name + ",\n" +
-                "She swallowed the " + dog.name + " to catch the " + cat.name + ",\n" +
-                "She swallowed the " + cat.name + " to catch the " + bird.name + ",\n" +
-                "She swallowed the " + bird.name + " to catch the " + spider.name + ",\n" +
-                "She swallowed the " + spider.name + " to catch the " + fly.name + ";\n" +
-                fly.rhyme +
+                verse(fly,spider, bird, cat, dog, cow) +
                 "\n" +
                 "There was an old lady who swallowed a " + horse.name + "...\n" +
                 horse.rhyme;
@@ -42,27 +35,28 @@ public class Song {
     }
 
     private String secondVerse(Animal fly, Animal spider) {
-        return exposition(spider, ";") +
-                development(fly, spider)+
-                coda(fly);
+        return verse(fly, spider);
     }
 
     private String thirdVerse(Animal fly, Animal spider, Animal bird) {
-        return exposition(bird, ";") +
-                development(fly, spider, bird) +
-                coda(fly);
+        return verse(fly, spider, bird);
     }
 
     private String fourthVerse(Animal fly, Animal spider, Animal bird, Animal cat) {
-        return exposition(cat, ";") +
-                development(fly, spider, bird, cat) +
-                coda(fly);
+        return verse(fly, spider, bird, cat);
     }
 
     private String fifthVerse(Animal fly, Animal spider, Animal bird, Animal cat, Animal dog) {
-        return exposition(dog, ";") +
-                development(fly, spider, bird, cat, dog) +
-                coda(fly);
+        return verse(fly, spider, bird, cat, dog);
+    }
+
+    private String verse(Animal... animals) {
+        Animal last = animals[animals.length - 1];
+        Animal firstAnimal = animals[0];
+
+        return exposition(last, ";") +
+                development(animals)+
+                coda(firstAnimal);
     }
 
     private String development(Animal... animals) {
