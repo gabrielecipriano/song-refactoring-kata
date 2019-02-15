@@ -14,16 +14,16 @@ public class Song {
     public void execute() {
 
         String song = composeSongWith(new Animal[] {
-                new Animal("fly", "I don't know why she swallowed a fly - perhaps she'll die!\n"),
-                new Animal("spider", "That wriggled and wiggled and tickled inside her.\n"),
-                new Animal("bird", "How absurd to swallow a bird.\n"),
-                new Animal("cat", "Fancy that to swallow a cat!\n"),
-                new Animal("dog", "What a hog, to swallow a dog!\n"),
-                new Animal("cow", "I don't know how she swallowed a cow!\n"),
+                new Animal("fly", "I don't know why she swallowed a fly - perhaps she'll die!"),
+                new Animal("spider", "That wriggled and wiggled and tickled inside her."),
+                new Animal("bird", "How absurd to swallow a bird."),
+                new Animal("cat", "Fancy that to swallow a cat!"),
+                new Animal("dog", "What a hog, to swallow a dog!"),
+                new Animal("cow", "I don't know how she swallowed a cow!"),
                 new Animal("horse", "...She's dead, of course!")
         });
 
-        System.out.println(song);
+        System.out.print(song);
     }
 
     private String composeSongWith(Animal[] animals) {
@@ -59,13 +59,13 @@ public class Song {
     }
 
 
-    private String coda(Animal fly) {
-        return fly.rhyme;
+    private String coda(Animal animal) {
+        return animal.rhyme + "\n";
     }
 
     private String exposition(Animal animal, final String punctuation) {
         return "There was an old lady who swallowed a " + animal.name + punctuation + "\n" +
-                animal.rhyme;
+                animal.rhyme + "\n";
     }
 
     private class Animal {
