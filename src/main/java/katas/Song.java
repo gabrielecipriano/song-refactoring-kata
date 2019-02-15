@@ -12,27 +12,26 @@ public class Song {
     }
 
     public void execute() {
-        Animal fly = new Animal("fly", "I don't know why she swallowed a fly - perhaps she'll die!\n");
-        Animal spider = new Animal("spider", "That wriggled and wiggled and tickled inside her.\n");
-        Animal bird = new Animal("bird", "How absurd to swallow a bird.\n");
-        Animal cat = new Animal("cat", "Fancy that to swallow a cat!\n");
-        Animal dog = new Animal("dog", "What a hog, to swallow a dog!\n");
-        Animal cow = new Animal("cow", "I don't know how she swallowed a cow!\n");
-        Animal horse = new Animal("horse", "...She's dead, of course!");
 
-        Animal[] animals = new Animal[] {
-                fly, spider, bird, cat, dog, cow, horse
-        };
+        String song = composeSongWith(new Animal[] {
+                new Animal("fly", "I don't know why she swallowed a fly - perhaps she'll die!\n"),
+                new Animal("spider", "That wriggled and wiggled and tickled inside her.\n"),
+                new Animal("bird", "How absurd to swallow a bird.\n"),
+                new Animal("cat", "Fancy that to swallow a cat!\n"),
+                new Animal("dog", "What a hog, to swallow a dog!\n"),
+                new Animal("cow", "I don't know how she swallowed a cow!\n"),
+                new Animal("horse", "...She's dead, of course!")
+        });
 
+        System.out.println(song);
+    }
 
-
-        String song = exposition(fly, ".") +
+    private String composeSongWith(Animal[] animals) {
+        return exposition(animals[0], ".") +
                 "\n" +
                 verses(animals) +
                 "\n" +
-                exposition(horse, "...");
-
-        System.out.println(song);
+                exposition(animals[animals.length - 1], "...");
     }
 
     private String verses(Animal[] animals) {
@@ -46,7 +45,7 @@ public class Song {
         Animal firstAnimal = animals[0];
 
         return exposition(last, ";") +
-                development(animals)+
+                development(animals) +
                 coda(firstAnimal);
     }
 
